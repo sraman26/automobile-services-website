@@ -1,5 +1,4 @@
 import React, {useState, useEffect } from 'react';
-import { Link, } from 'react-router-dom';
 
 function ListManufacturer()
 {
@@ -20,6 +19,8 @@ function ListManufacturer()
     }), []);
 
     return (
+        <div>
+            <h1>Manufacturers</h1>
         <table className = "table table-striped">
             <thead>
                 <tr>
@@ -36,6 +37,7 @@ function ListManufacturer()
                     })}
             </tbody>
         </table>
+        </div>
     );
 }
 export default ListManufacturer
