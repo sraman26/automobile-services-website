@@ -45,7 +45,7 @@ function FormVehicleModel() {
         data.manufacturer = manufacturer
         console.log(data)
 
-        const modelsUrl = 'http://localhost:8090/api/models/';
+        const modelsUrl = 'http://localhost:8100/api/models/';
         const fetchConfig = {
           method: "post",
           body: JSON.stringify(data),
