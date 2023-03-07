@@ -1,10 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import ListVehicleModels from './ListVehicleModels';
-import FormVehicleModel from './FormVehicleModel';
-import ListAutomobiles from './ListAutomobiles';
-import FormAutomobile from './FormAutomobile';
+import ListVehicleModels from './Vehicles/ListVehicleModels';
+import FormVehicleModel from './Vehicles/FormVehicleModel';
+import ListAutomobiles from './Automobiles/ListAutomobiles';
+import FormAutomobile from './Automobiles/FormAutomobile';
+import ListManufacturer from './Manufacturer/ListManufacturer';
+import FormManufacturer from './Manufacturer/FormManufacturer';
+
+import React from 'react';
 
 function App() {
   return (
@@ -13,6 +17,10 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="manufacturers">
+            <Route index element={<ListManufacturer />} />
+            <Route path="new" element={<FormManufacturer />} />
+          </Route>
           <Route path="models">
             <Route index element={<ListVehicleModels />} />
             <Route path="new" element={<FormVehicleModel />} />

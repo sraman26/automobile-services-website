@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
 function Nav() {
   return (
@@ -13,11 +14,17 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
             </li>
+             <li className="nav-item">
+              <NavLink className="nav-link active" to="/manufacturers">Manufacturers</NavLink>
+            </li>
             <li className="nav-item">
               <NavLink className="nav-link active" to="/automobiles">Automobiles</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link active" to="/models">Models</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link active" to="/manufacturers/new">Add a manufacturer</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link active" to="/automobiles/new">Add an automobile</NavLink>

@@ -3,7 +3,7 @@
 Team:
 
 * Person 1 - Ali Bhatti - Auto Sales
-* Person 2 - Which microservice?
+* Sitara - Automobile Service
 
 ## Design
 
