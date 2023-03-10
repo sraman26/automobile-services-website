@@ -38,8 +38,8 @@ function AppointmentForm()
     }
 
     const fetchData = async () => {
-        const autoUrl = 'http://localhost:8100/api/automobiles';
-        const techUrl = 'http://localhost:8080/api/services/technicians';
+        const autoUrl = 'http://localhost:8100/api/automobiles/';
+        const techUrl = 'http://localhost:8080/api/services/technicians/';
         const autoResp = await fetch(autoUrl);
         const techResp = await fetch(techUrl);
 
@@ -68,7 +68,7 @@ function AppointmentForm()
         data.time = time;
         console.log(data)
 
-        const appointmentURL = "http://localhost:8080/api/services";
+        const appointmentURL = "http://localhost:8080/api/services/";
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),

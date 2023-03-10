@@ -76,6 +76,7 @@ def api_list_appointments(request):
             )
     elif request.method == "POST":
         content = json.loads(request.body)
+        print({"content": content})
         automobile = AutomobileVO.objects.get(vin=content["vehicleVN"])
         content["vehicleVN"] = automobile
         technician = Technician.objects.get(name=content["technician"])
