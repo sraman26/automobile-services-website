@@ -4,12 +4,26 @@ class Technician(models.Model):
     name = models.TextField()
     employee_number = models.PositiveIntegerField()
 
+class AutomobileVO(models.Model):
+    vin = models.CharField(max_length=17, unique=True)
+
 class Service_Appointment(models.Model):
-    owner = models.TextField()
+    customer = models.TextField()
     reason = models.TextField()
-    date = models.DateField()
-    time = models.TimeField()
-    vehicleVN = models.TextField()
+    appointment_date = models.DateField()
+    appointment_time = models.TimeField()
+    technician = models.ForeignKey(
+        Technician,
+        related_name="technician",
+        on_delete=models.CASCADE
+    )
+    vehicleVN = models.ForeignKey(
+        AutomobileVO,
+        related_name= "vehicleVN",
+        on_delete=models.CASCADE
+    )
+
+
 
 
 

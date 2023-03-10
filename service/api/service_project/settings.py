@@ -30,6 +30,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'service_rest.apps.ServiceRestConfig',
     "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djwto',
 
 ]
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = [
     "localhost",
+    "inventory-api",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

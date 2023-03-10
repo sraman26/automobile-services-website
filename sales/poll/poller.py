@@ -11,13 +11,14 @@ django.setup()
 
 # Import models from sales_rest, here.
 # from sales_rest.models import Something
+from sales_rest.models import AutomobileVO
 
 def poll():
     while True:
         print('Sales poller polling for data')
         try:
-            # Write your polling logic, here
-            pass
+            response = response.get("http://localhost:8100/api/automobiles/")
+            return responseß
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)
