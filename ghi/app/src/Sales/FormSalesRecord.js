@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function FormSalesRecord() {
     const [salesRecords, setAutomobiles] = useState([])
@@ -35,7 +35,6 @@ function FormSalesRecord() {
       const response1 = await fetch(url1);
       const response2 = await fetch(url2);
       const response3 = await fetch(url3);
-      console.log(response1)
 
       if (response1.ok && response2.ok && response3.ok) {
         const data1 = await response1.json();
@@ -44,7 +43,7 @@ function FormSalesRecord() {
         setAutomobiles(data1.autos);
         setSalesPersons(data2.salespersons);
         setCustomers(data3.customers);
-        console.log(data1)
+
       }
     }
 
@@ -61,9 +60,8 @@ function FormSalesRecord() {
       data.sales_person = sales_person;
       data.customer = customer;
       data.automobile = automobile;
-      console.log(data)
 
-      const salesRecordUrl = 'http://localhost:8090/api/sales/new/';
+      const salesRecordUrl = 'http://localhost:8090/api/sales/';
       const fetchConfig = {
         method: "post",
         body: JSON.stringify(data),
@@ -75,10 +73,10 @@ function FormSalesRecord() {
       const response = await fetch(salesRecordUrl, fetchConfig);
       const newSalesRecord = await response.json();
 
-      sales_price('');
-      sales_person('');
-      customer('');
-      automobile('');
+      setSalesPrice('');
+      setSalesPerson('');
+      setCustomer('');
+      setAutomobile('');
 
     }
 
@@ -89,11 +87,11 @@ function FormSalesRecord() {
               <h1>Record a new sale</h1>
               <form onSubmit={handleSubmit} id="create-salesrecord-form">
               <div className="mb-3">
-                  <select value={automobile} onChange={handleAutomobileChange} required name="automobile" id="automobile" className="form-select">
+                  <select value={automobile} onChange={handleAutomobileChange} required type="text" id="automobile" className="form-select">
                     <option value="">Choose an automobile by VIN</option>
                     {salesRecords.map(auto => {
                         return (
-                            <option key={auto.id} value={auto.id}>
+                            <option key={auto.vin} value={auto.vin}>
                                 {auto.vin}
                             </option>
                         )
@@ -101,11 +99,11 @@ function FormSalesRecord() {
                   </select>
                 </div>
                 <div className="mb-3">
-                  <select value={sales_person} onChange={handleSalesPersonChange} required name="sales_person" id="sales_person" className="form-select">
+                  <select value={sales_person} onChange={handleSalesPersonChange} required type="text" id="sales_person" className="form-select">
                     <option value="">Choose a sales person</option>
                     {salesPersons.map(salespersons => {
                         return (
-                            <option key={salespersons.id} value={salespersons.id}>
+                            <option key={salespersons.name} value={salespersons.name}>
                                 {salespersons.name}
                             </option>
                         )
@@ -113,11 +111,11 @@ function FormSalesRecord() {
                   </select>
                 </div>
                 <div className="mb-3">
-                  <select value={customer} onChange={handleCustomerChange} required name="customer" id="customer" className="form-select">
+                  <select value={customer} onChange={handleCustomerChange} required type="text" id="customer" className="form-select">
                     <option value="">Choose a customer</option>
                     {customers.map(customer => {
                         return (
-                            <option key={customer.id} value={customer.id}>
+                            <option key={customer.name} value={customer.name}>
                                 {customer.name}
                             </option>
                         )

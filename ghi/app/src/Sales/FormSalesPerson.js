@@ -1,8 +1,6 @@
 import React, {useState, useEffect } from 'react';
 
 function FormSalesPerson() {
-    const [salesPersons, setSalesPersons] = useState([])
-
     const [name, setName] = useState("");
     const [employee_number, setEmployeeNumber] = useState("");
 

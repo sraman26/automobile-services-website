@@ -34,11 +34,11 @@ function ListAllSales() {
           {sales.map(sale => {
             return(
               <tr>
-                <td>{ sale.sales_person }</td>
-                <td>{ sale.employee_number }</td>
-                <td>{ sale.customer }</td>
-                <td>{ sale.automobile }</td>
-                <td>{ sale.sale_price }</td>
+                <td>{ sale.sales_person.name }</td>
+                <td>{ sale.sales_person.employee_number }</td>
+                <td>{ sale.customer.name}</td>
+                <td>{ sale.automobile.vin }</td>
+                <td>{ sale.sales_price }</td>
               </tr>
             );
           })}
