@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-function AppointmentForm()
-{
+function AppointmentForm() {
     const [appointments, setAutomobiles] = useState([])
     const [technicians, setTechnicians] = useState([])
 
@@ -49,26 +48,28 @@ function AppointmentForm()
             setAutomobiles(autoData.autos)
             setTechnicians(techData.technicians)
         }
+
+
     }
 
     useEffect(() => {
-        fetchData();
+      fetchData();
     }, []);
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
+      event.preventDefault();
 
-        const data = {};
+      const data = {};
+
 
         data.customer = customer;
         data.technician = technician;
         data.reason = reason;
         data.automobile = automobile;
-        data.date = date;
-        data.time = time;
-        console.log(data)
+        data.appointment_date = date;
+        data.appointment_time = time;
 
-        const appointmentURL = "http://localhost:8080/api/services/";
+        const appointmentURL = 'http://localhost:8080/api/services/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -78,14 +79,17 @@ function AppointmentForm()
         }
 
         const response = await fetch(appointmentURL, fetchConfig);
-        appointments = await response.json();
+        const newAppointment = await response.json();
+        console.log("new appointment:", newAppointment)
 
-        customer('');
-        technician('');
-        reason('');
-        automobile('');
-        date('');
-        time('');
+
+
+        setCustomer('');
+        setTechnician('');
+        setReason('');
+        setAutomobile('');
+        setDate('');
+        setTime('');
     }
     return (
         <div className="row">
@@ -94,11 +98,11 @@ function AppointmentForm()
               <h1>Enter New Appointment</h1>
               <form onSubmit={handleSubmit} id="create-appointment-form">
                 <div className="mb-3">
-                    <select value={automobile} onChange={handleAutomobileChange} required name="automobile" id="automobile" className="form-select">
+                    <select value={automobile} onChange={handleAutomobileChange} required type ="text" id="automobile" className="form-select">
                         <option value="">Choose an automobile by VIN</option>
                         {appointments.map(auto => {
                             return (
-                                <option key={auto.id} value={auto.id}>
+                                <option key={auto.vin} value={auto.vin}>
                                     {auto.vin}
                                 </option>
                             )
