@@ -85,7 +85,7 @@ function FormVehicleModel() {
                     <option value="">Choose a manufacturer</option>
                     {manufacturers.map(manufacturer => {
                         return (
-                            <option key={manufacturer.id} value={manufacturer.id}>
+                            <option key={manufacturer.name} value={manufacturer.name}>
                                 {manufacturer.name}
                             </option>
                         )

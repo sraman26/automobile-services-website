@@ -29,6 +29,7 @@ function ListAppointments() {
             <th>Time</th>
             <th>Technician</th>
             <th>Reason</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +42,10 @@ function ListAppointments() {
                  <td>{ appointment.appointment_time}</td>
                 <td>{ appointment.technician.name}</td>
                 <td>{ appointment.reason }</td>
+                <td>
+                  <button className="btn btn-primary" style={{backgroundColor:"red", border: '1px solid red'}}>Cancel</button>
+                  <button className="btn btn-primary" style={{backgroundColor:"green", border: '1px solid green'}}>Finish</button>
+                </td>
               </tr>
             );
           })}
