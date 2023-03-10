@@ -66,7 +66,7 @@ function AppointmentHistory() {
         {appointments.map(appointment => {
           return(
             <tr key={ appointment.id }>
-              <td>{ appointment.vehicleVN.vin }</td>
+              <td>{ appointment.automobile.vin }</td>
               <td>{ appointment.customer }</td>
               <td>{ appointment.appointment_date }</td>
               <td>{ appointment.appointment_time }</td>

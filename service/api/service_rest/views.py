@@ -21,11 +21,11 @@ class TechnicianDetailEncoder(ModelEncoder):
 
 class Service_AppointmentEncoder(ModelEncoder):
     model = Service_Appointment
-    properties = ["customer", "appointment_date", "appointment_time", "reason", "technician", "vehicleVN"]
+    properties = ["customer", "appointment_date", "appointment_time", "reason", "technician", "automobile"]
 
     encoders = {
         "technician": TechnicianDetailEncoder(),
-        "vehicleVN": AutomobileVOEncoder(),
+        "automobile": AutomobileVOEncoder(),
     }
 
 @require_http_methods(["GET", "POST"])
@@ -76,11 +76,13 @@ def api_list_appointments(request):
             )
     elif request.method == "POST":
         content = json.loads(request.body)
-        automobile = AutomobileVO.objects.get(vin=content["vehicleVN"])
-        content["vehicleVN"] = automobile
+        print(content)
+
+        automobile = AutomobileVO.objects.get(vin=content["automobile"])
+        content["automobile"] = automobile
         technician = Technician.objects.get(name=content["technician"])
         content["technician"] = technician
-
+        print("content:", content)
         service_appointment = Service_Appointment.objects.create(**content)
         return JsonResponse(
             service_appointment,
@@ -98,6 +100,7 @@ def api_appointment_details(request, pk):
             safe = False
         )
     elif request.method == "DELETE":
+        appointment = Service_Appointment.objects.get(id=pk)
         appointment.delete()
         print("appointment is deleted")
         return JsonResponse(
