@@ -42,7 +42,7 @@ function FormVehicleModel() {
 
         data.name = name;
         data.picture_url = picture_url;
-        data.manufacturer = manufacturer
+        data.manufacturer = manufacturer;
         console.log(data)
 
         const modelsUrl = 'http://localhost:8100/api/models/';
@@ -77,7 +77,7 @@ function FormVehicleModel() {
                   <label htmlFor="name">Name</label>
                 </div>
                 <div className="form-floating mb-3">
-                  <input value={picture_url} onChange={handlePictureUrlChange} placeholder="Url" required type="text" name="url" id="picture_url" className="form-control"/>
+                  <input value={picture_url} onChange={handlePictureUrlChange} placeholder="Url" required type="text" name="picture_url" id="picture_url" className="form-control"/>
                   <label htmlFor="url">Picture Url</label>
                 </div>
                 <div className="mb-3">

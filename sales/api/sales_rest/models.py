@@ -2,9 +2,6 @@ from django.db import models
 
 # Create your models here.
 class AutomobileVO(models.Model):
-    import_href = models.CharField(max_length=200, unique=True)
-    color = models.CharField(max_length=50)
-    year = models.PositiveSmallIntegerField()
     vin = models.CharField(max_length=17, unique=True)
 
 class SalesPerson(models.Model):
@@ -17,7 +14,7 @@ class Customer(models.Model):
     phone_number = models.PositiveBigIntegerField()
 
 class SaleRecord(models.Model):
-    sales_price = models.DecimalField(max_digits=9, decimal_places=2)
+    sales_price = models.PositiveIntegerField()
 
     sales_person = models.ForeignKey(
         SalesPerson,

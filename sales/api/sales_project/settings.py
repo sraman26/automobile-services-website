@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djwto',
 ]
 
 MIDDLEWARE = [
@@ -49,9 +48,6 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = [
     "localhost",
-    "inventory",
-    "sales",
-    "service",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

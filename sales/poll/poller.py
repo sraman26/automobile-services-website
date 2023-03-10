@@ -13,15 +13,30 @@ django.setup()
 # from sales_rest.models import Something
 from sales_rest.models import AutomobileVO
 
+def get_automobiles():
+    response = requests.get("http://inventory-api:8000/api/automobiles/") ## accessing this specific location
+    content = json.loads(response.content) ## content is a dict
+    for auto in content["autos"]: ## iterating over content dictionary (the content is what you input in insomnia)
+        AutomobileVO.objects.update_or_create(
+
+            defaults={
+            "vin": auto["vin"],
+            }, ## reassign other vairables in VO to these items in the fetch dictionary
+        )
+
 def poll():
     while True:
         print('Sales poller polling for data')
         try:
+<<<<<<< HEAD
             response = response.get("http://localhost:8100/api/automobiles/")
             return responseß
+=======
+            get_automobiles()
+>>>>>>> 9d6cf769f5eee21bdb585639e25adf06404031cd
         except Exception as e:
-            print(e, file=sys.stderr)
-        time.sleep(60)
+            print(e)
+        time.sleep(5)
 
 
 if __name__ == "__main__":

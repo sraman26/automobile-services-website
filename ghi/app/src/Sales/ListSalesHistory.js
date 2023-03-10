@@ -5,6 +5,11 @@ function ListSalesHistory() {
   const [sales, setSales] = useState([])
   const [salespersons, setSalesPersons] = useState([])
 
+  const [filterTerm, setFilterTerm] = useState("")
+
+  const handleFilterChange = (e) => {
+    setFilterTerm(e.target.value);
+  }
 
   const fetchData = async () => {
     const url = 'http://localhost:8090/api/sales/salesperson/';
@@ -23,6 +28,7 @@ function ListSalesHistory() {
       const data = await response.json();
       setSales(data.salesrecord)
     }
+
   }
 
   useEffect(()=>{
@@ -33,17 +39,12 @@ function ListSalesHistory() {
     fetchData()
   }, [])
 
-  const handleSalesChange = (event) => {
-    const value = event.target.value;
-    setSales(value);
-  }
-
   return (
     <div>
       <h1>Sales person history</h1>
-      <select value={sales} onChange={handleSalesChange} required id ="salesperson" name="salesperson" className="form-select form-select-lg form-select-padding-lg mb-3" >
+      <select value={salespersons} onChange={handleFilterChange} required id ="salesperson" name="salesperson" className="form-select form-select-lg form-select-padding-lg mb-3" >
         <option value="">Choose a sales person</option>
-        {salespersons.map(saleperson => {
+        {salespersons.filter(saleperson => saleperson["name"].includes(filterTerm)).map(saleperson => {
           return(
             <option key={ saleperson.id } value={ saleperson.id }>
               { saleperson.name }
@@ -64,10 +65,10 @@ function ListSalesHistory() {
         {sales.map(sale => {
           return(
             <tr key={ sale.id }>
-              <td>{ sale.sales_person }</td>
-              <td>{ sale.customer }</td>
-              <td>{ sale.automobile }</td>
-              <td>{ sale.sale_price }</td>
+              <td>{ sale.sales_person.name }</td>
+              <td>{ sale.customer.name }</td>
+              <td>{ sale.automobile.vin }</td>
+              <td>{ sale.sales_price }</td>
             </tr>
           );
         })}
