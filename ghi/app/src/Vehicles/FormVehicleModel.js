@@ -39,8 +39,14 @@ function FormVehicleModel() {
 
         data.name = name;
         data.picture_url = picture_url;
+<<<<<<< HEAD
         data.manufacturer = manufacturer;
         console.log("this is data", data)
+=======
+        data.manufacturer_id = manufacturer;
+        console.log(data)
+
+>>>>>>> 7a923d655dbe762b5f082cb53bddb51afc77745e
         const modelsUrl = 'http://localhost:8100/api/models/';
         const fetchConfig = {
           method: "post",
@@ -78,7 +84,7 @@ function FormVehicleModel() {
                     <option value="">Choose a manufacturer</option>
                     {manufacturers.map(manufacturer => {
                         return (
-                            <option key={manufacturer.name} value={manufacturer.name}>
+                            <option key={manufacturer.id} value={manufacturer.id}>
                                 {manufacturer.name}
                             </option>
                         )

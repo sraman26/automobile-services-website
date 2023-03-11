@@ -17,6 +17,22 @@ function ListAppointments() {
     getData()
   }, [])
 
+  const handleDelete = async (e) => {
+    const url = `http://localhost:8080/api/services/${e.target.id}`
+
+    const fetchConfigs = {
+      method: "Delete",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+
+    const resp = await fetch(url, fetchConfigs)
+    const data = await resp.json()
+
+    setAppointments(appointments.filter(appointment => String(appointment.id) !== e.target.id))
+  }
+
   return (
     <div>
       <h1>Appointments</h1>
@@ -29,6 +45,7 @@ function ListAppointments() {
             <th>Time</th>
             <th>Technician</th>
             <th>Reason</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +58,10 @@ function ListAppointments() {
                  <td>{ appointment.appointment_time}</td>
                 <td>{ appointment.technician.name}</td>
                 <td>{ appointment.reason }</td>
+                <td>
+                  <button onClick={handleDelete} id={appointment.id} className="btn btn-primary" style={{backgroundColor:"red", border: '1px solid red'}}>Cancel</button>
+                  <button onClick={handleDelete} id={appointment.id} className="btn btn-primary" style={{backgroundColor:"green", border: '1px solid green'}}>Finish</button>
+                </td>
               </tr>
             );
           })}
