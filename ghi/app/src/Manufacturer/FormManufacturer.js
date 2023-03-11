@@ -17,7 +17,6 @@ function FormManufacturer() {
         if (response.ok) {
           const data = await response.json();
           setManufacturers(data.manufacturers);
-          console.log(data.models)
         }
     }
 
@@ -32,7 +31,6 @@ function FormManufacturer() {
         const data = {};
 
         data.name = name;
-        console.log(data)
 
         const manufacturerUrl = 'http://localhost:8100/api/manufacturers/';
         const fetchConfig = {
@@ -46,7 +44,6 @@ function FormManufacturer() {
         const response = await fetch(manufacturerUrl, fetchConfig);
         if (response.ok) {
           const newManufacturer = await response.json();
-          console.log(newManufacturer)
 
           setName('');
         }

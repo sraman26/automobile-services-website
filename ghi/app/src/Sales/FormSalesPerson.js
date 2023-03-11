@@ -20,7 +20,6 @@ function FormSalesPerson() {
 
         data.name = name;
         data.employee_number = employee_number;
-        console.log(data)
 
         const salespersonUrl = 'http://localhost:8090/api/sales/salesperson/';
         const fetchConfig = {
@@ -34,7 +33,6 @@ function FormSalesPerson() {
         const response = await fetch(salespersonUrl, fetchConfig);
         if (response.ok) {
           const newSalesPerson = await response.json();
-          console.log(newSalesPerson)
 
           setName('');
           setEmployeeNumber('');

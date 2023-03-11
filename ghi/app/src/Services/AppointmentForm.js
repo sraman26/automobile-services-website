@@ -80,9 +80,6 @@ function AppointmentForm() {
 
         const response = await fetch(appointmentURL, fetchConfig);
         const newAppointment = await response.json();
-        console.log("new appointment:", newAppointment)
-
-
 
         setCustomer('');
         setTechnician('');

@@ -28,7 +28,6 @@ function FormCustomer() {
         data.name = name;
         data.address = address;
         data.phone_number = phone_number;
-        console.log(data)
 
         const customerUrl = 'http://localhost:8090/api/sales/customer/';
         const fetchConfig = {
@@ -42,7 +41,6 @@ function FormCustomer() {
         const response = await fetch(customerUrl, fetchConfig);
         if (response.ok) {
           const newCustomer = await response.json();
-          console.log(newCustomer)
 
           setName('');
           setAddress('');
