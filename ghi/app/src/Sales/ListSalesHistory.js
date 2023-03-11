@@ -39,14 +39,21 @@ function ListSalesHistory() {
     fetchData()
   }, [])
 
+  const handleSalesPersonChange = (event) => {
+    const value = event.target.value;
+    setSalesPersons(value);
+}
+
   return (
     <div>
       <h1>Sales person history</h1>
-      <select value={salespersons} onChange={handleFilterChange} required id ="salesperson" name="salesperson" className="form-select form-select-lg form-select-padding-lg mb-3" >
-        <option value="">Choose a sales person</option>
-        {salespersons.filter(saleperson => saleperson["name"].includes(filterTerm)).map(saleperson => {
+      <select value={salespersons} onChange={handleSalesPersonChange} required id ="salesperson" name="salesperson" className="form-select form-select-lg form-select-padding-lg mb-3" >
+        <option value="" onChange={handleFilterChange}>Choose a sales person</option>
+        {salespersons
+        .filter((saleperson) => saleperson.name.includes(filterTerm))
+        .map(saleperson => {
           return(
-            <option key={ saleperson.id } value={ saleperson.id }>
+            <option key={ saleperson.name } value={ saleperson.name }>
               { saleperson.name }
             </option>
           )

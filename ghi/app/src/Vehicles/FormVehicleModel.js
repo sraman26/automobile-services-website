@@ -21,19 +21,16 @@ function FormVehicleModel() {
     }
 
     const fetchData = async () => {
-        const url = 'http://localhost:8100/api/manufacturers/';
-        const response = await fetch(url);
-
-        if (response.ok) {
-          const data = await response.json();
-          setManufacturers(data.manufacturers);
-        }
+      const url = 'http://localhost:8100/api/manufacturers/';
+      const response = await fetch(url);
+      const data = await response.json();
+      setManufacturers(data.manufacturers);
     }
+
 
     useEffect(() => {
       fetchData();
     }, []);
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -55,14 +52,11 @@ function FormVehicleModel() {
         };
 
         const response = await fetch(modelsUrl, fetchConfig);
-        if (response.ok) {
-          const newModel = await response.json();
-          console.log(newModel)
+        const newModel = await response.json();
 
-          setName('');
-          setPictureurl('');
-          setManufacturer('');
-        }
+        setName('');
+        setPictureurl('');
+        setManufacturer('');
       }
 
 
@@ -85,7 +79,7 @@ function FormVehicleModel() {
                     <option value="">Choose a manufacturer</option>
                     {manufacturers.map(manufacturer => {
                         return (
-                            <option key={manufacturer.name} value={manufacturer.id}>
+                            <option key={manufacturer.id} value={manufacturer.id}>
                                 {manufacturer.name}
                             </option>
                         )

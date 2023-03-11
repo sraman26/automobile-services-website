@@ -130,7 +130,7 @@ def api_list_sales(request):
 
     else:
         content = json.loads(request.body)
-        print(content)
+        print({"content": content})
 
         # Get the automobile, sales_person, and customer, objects and put it in the content dict
         automobile = AutomobileVO.objects.get(vin=content["automobile"])
@@ -140,7 +140,6 @@ def api_list_sales(request):
         customer = Customer.objects.get(name=content["customer"])
         content["customer"] = customer
 
-        print(content)
 
         salesrecord = SaleRecord.objects.create(**content)
         return JsonResponse(

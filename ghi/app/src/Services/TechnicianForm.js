@@ -24,7 +24,7 @@ function FormTechnician() {
         data.employee_number = employee_number;
         console.log(data)
 
-        const technicianUrl = 'http://localhost:8080/api/services/technicians/new';
+        const technicianUrl = 'http://localhost:8080/api/services/technicians/';
         const fetchConfig = {
           method: "post",
           body: JSON.stringify(data),
