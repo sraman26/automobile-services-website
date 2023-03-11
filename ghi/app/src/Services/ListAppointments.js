@@ -21,10 +21,13 @@ function ListAppointments() {
     const url = `http://localhost:8080/api/services/${e.target.id}`
 
     const fetchConfigs = {
+
       method: "Delete",
       headers: {
         "Content-Type": "application/json"
-      }
+        }
+
+
     }
 
     const resp = await fetch(url, fetchConfigs)

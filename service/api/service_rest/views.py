@@ -66,7 +66,7 @@ def api_show_technician(request, pk):
             )
 
 
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["GET", "POST", "DELETE"])
 def api_list_appointments(request):
     if request.method == "GET":
         appointment = Service_Appointment.objects.all()
@@ -89,6 +89,15 @@ def api_list_appointments(request):
             encoder=Service_AppointmentEncoder,
             safe = False,
             )
+    elif request.method == "DELETE":
+        appointment = Service_Appointment.objects.get(id)
+        appointment.delete()
+        print("appointment is deleted")
+        return JsonResponse(
+            appointment,
+            encoder = Service_AppointmentEncoder,
+            safe = False,
+        )
 
 @require_http_methods(["GET", "DELETE"])
 def api_appointment_details(request, pk):

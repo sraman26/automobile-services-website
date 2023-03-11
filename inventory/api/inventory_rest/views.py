@@ -156,7 +156,7 @@ def api_manufacturer(request, pk):
 
 
 @require_http_methods(["GET", "POST"])
-def api_vehicle_models(request):
+def api_vehicle_models(request,):
     if request.method == "GET":
         models = VehicleModel.objects.all()
         return JsonResponse(
