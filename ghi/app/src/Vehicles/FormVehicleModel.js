@@ -40,7 +40,7 @@ function FormVehicleModel() {
         data.name = name;
         data.picture_url = picture_url;
         data.manufacturer = manufacturer;
-
+        console.log("this is data", data)
         const modelsUrl = 'http://localhost:8100/api/models/';
         const fetchConfig = {
           method: "post",

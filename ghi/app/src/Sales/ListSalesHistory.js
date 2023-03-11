@@ -32,12 +32,9 @@ function ListSalesHistory() {
   }
 
   useEffect(()=>{
-    getData()
-  }, [])
-
-  useEffect(()=>{
-    fetchData()
-  }, [])
+    fetchData();
+    getData();
+  }, []);
 
   const handleSalesPersonChange = (event) => {
     const value = event.target.value;
@@ -47,11 +44,14 @@ function ListSalesHistory() {
   return (
     <div>
       <h1>Sales person history</h1>
-      <select value={salespersons} onChange={handleSalesPersonChange} required id ="salesperson" name="salesperson" className="form-select form-select-lg form-select-padding-lg mb-3" >
+      <select value={salespersons}
+        onChange={handleSalesPersonChange}
+        required id ="salesperson"
+        name="salesperson"
+        className="form-select form-select-lg form-select-padding-lg mb-3" >
+
         <option value="" onChange={handleFilterChange}>Choose a sales person</option>
-        {salespersons
-        .filter((saleperson) => saleperson.name.includes(filterTerm))
-        .map(saleperson => {
+        {salespersons.filter((saleperson) => saleperson["name"].includes(filterTerm)).map(saleperson => {
           return(
             <option key={ saleperson.name } value={ saleperson.name }>
               { saleperson.name }
