@@ -32,8 +32,6 @@ Appointment History: Takes the appointments for each vehicle number and records 
 List Appointments: Lists the appointments and the vehicle numbers for each
 Technician Form: Creates a technician, does not integrate with any microservice on its own. However the technician model is used in other models that integrate with inventory microservice.
 
-Explain your models and integration with the inventory
-microservice, here.
 
 ## Sales microservice
 
